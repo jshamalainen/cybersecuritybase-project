@@ -42,7 +42,7 @@ public class SignupController {
         // with ORM, and he also thinks it is slow, so he used plain SQL. 
 	Connection connection;
         connection = jdbcTemplate.getDataSource().getConnection();
-        String sql = "SELECT * FROM Signup WHERE name = " + name;
+        String sql = "SELECT * FROM Signup WHERE name='" + name + "'";
         ResultSet signup = connection.createStatement().executeQuery(sql);
         if(signup.isBeforeFirst()) {
             return '"' + name + '"' + " is participating";
