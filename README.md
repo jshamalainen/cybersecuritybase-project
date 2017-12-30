@@ -1,3 +1,5 @@
+Please get the report from: https://github.com/jshamalainen/cybersecuritybase-project/blob/master/README.md
+
 You can download the project from Github: https://github.com/jshamalainen/cybersecuritybase-project
 
 It is a fork of the template project, so it can be prepared and executed the same way. 
@@ -26,8 +28,8 @@ Steps to reproduce:
 	<input type='submit' value='Delete'>
 </form>
 5. Click the Submit button on your custom web page. This will remove "jaska" from participants list. 
-6. Go to localhost:8080/participation/jaska to verify that jaska has been removed. 
-7. Go to localhost:8080/participation/pekka to verify that pekka is still participating. 
+6. Go to http://localhost:8080/participation/jaska to verify that jaska has been removed. 
+7. Go to http://localhost:8080/participation/pekka to verify that pekka is still participating. 
 
 
 Please refer to https://www.owasp.org/index.php/Testing_for_Insecure_Direct_Object_References_(OTG-AUTHZ-004)
@@ -53,7 +55,7 @@ It would be easiest to use the ORM the same way it is done in function removePar
 Issue: cross-site scripting vulnerability (reflected)
 Steps to reproduce: 
 1. Go to the site http://localhost:8080 and register using a name containing javascript, e.g. "<script>alert("XSS");</script>"
-2. Observe the popup saying "XSS". 
+2. Observe the pop-up saying "XSS". 
 This implies that an attacker could trick the user to click a link which inserts javascript code in the database on user's behalf and immediately returns that to the user's browser, which may now execute it. 
 
 Mitigation: 
@@ -67,7 +69,7 @@ I'm thinking about this approach because names are a difficult to validate. Ther
 
 Issue: CSRF 
 Steps to reproduce: 
-1. Justg like in issue "Insecure direct access to data", go to the site and register using any name, e.g. "jaska"
+1. Just like in issue "Insecure direct access to data", go to the site and register using any name, e.g. "jaska"
 2. Observe that there is an "Unregister" button. Check the source code of it to see how to format an attack.  
 3. You can now create a web page on a web server that has the following part in it: 
 <form action='http://localhost:8080/participation/jaska' method='POST' name='_method'>
