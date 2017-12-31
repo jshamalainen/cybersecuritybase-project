@@ -23,10 +23,12 @@ Steps to reproduce:
 2. Register using another (different) name, e.g. "pekka"
 3. Observe that there is an "Unregister" button. Check the source code of it. This button unregisters pekka.
 4. You can now create a web page on a web server that has the following part in it: 
+```html
 <form action='http://localhost:8080/participation/jaska' method='POST' name='_method'>
 	<input type='hidden' name='_method' value='delete'>
 	<input type='submit' value='Delete'>
 </form>
+```
 5. Click the Submit button on your custom web page. This will remove "jaska" from participants list. 
 6. Go to http://localhost:8080/participation/jaska to verify that jaska has been removed. 
 7. Go to http://localhost:8080/participation/pekka to verify that pekka is still participating. 
@@ -72,10 +74,12 @@ Steps to reproduce:
 1. Just like in issue "Insecure direct access to data", go to the site and register using any name, e.g. "jaska"
 2. Observe that there is an "Unregister" button. Check the source code of it to see how to format an attack.  
 3. You can now create a web page on a web server that has the following part in it: 
+```html 
 <form action='http://localhost:8080/participation/jaska' method='POST' name='_method'>
 	<input type='hidden' name='_method' value='delete'>
 	<input type='submit' value='Delete'>
 </form>
+```
 4. Click the Submit button on your custom web page. This will remove "jaska" from participants list. 
 5. Go to http://localhost:8080/participation/jaska to verify that jaska has been removed. 
 There is no authentication and there's insecure direct access to data, so CSRF attack is a bit pointless at the moment. But even after those other two vulnerabilities were closed, the application would be vulnerable to this attack. Thus, this security hole must be closed, too. 
